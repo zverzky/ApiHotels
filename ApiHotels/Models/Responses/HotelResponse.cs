@@ -2,7 +2,7 @@
 {
     public class HotelResponse
     {
-        public static Guid Id { get; set; }
+        public  Guid Id { get; set; }
         public string Name { get; set; }
         public string Adress { get; set; }
         public float Rating { get; set; }
