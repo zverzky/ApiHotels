@@ -41,7 +41,7 @@ public class UsersController : Controller
         return NoContent();
     }
     [HttpDelete("{id}")]
-    public IActionResult DeleteUser([FromRoute] Guid id)
+    public ActionResult DeleteUser([FromRoute] Guid id)
     {
         return NoContent();
     }
