@@ -1,4 +1,6 @@
-﻿namespace ApiHotels.Models.Requests
+﻿
+
+namespace ApiHotels.Models.Requests
 {
     public class RegisterUserRequest
     {
