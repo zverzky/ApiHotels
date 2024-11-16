@@ -24,7 +24,7 @@ public class UsersController : Controller
         return Ok();
     }
     [HttpGet("{id}")]
-    public ActionResult<UserWithResponse> GetIserById([FromRoute] Guid id)
+    public ActionResult<UserWithResponse> GetUserById([FromRoute] Guid id)
     {
         var user = new UserWithResponse();
         return Ok(user);
@@ -45,7 +45,7 @@ public class UsersController : Controller
     {
         return NoContent();
     }
-    [HttpPatch("{id}/Diactivate)")]
+    [HttpPatch("{id}/Deactivate)")]
     public IActionResult Diactivate([FromRoute] Guid id)
     {
         return NoContent();
