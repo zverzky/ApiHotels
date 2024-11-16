@@ -8,9 +8,10 @@ namespace ApiHotels.Models.Requests.Validators
     {
         public RegisterUserRequestValidator() 
         {
-            RuleFor(model => model.Email).EmailAddress().WithMessage("Этот email не email");
+            RuleFor(model => model.PhoneNumber).Length(11);
             RuleFor(model => model.Password).MinimumLength(8);
             RuleFor(model => model.UserName).MaximumLength(50).MinimumLength(3);
+            RuleFor(model => model.BrithDate).NotEmpty();
         }
     }
 }
