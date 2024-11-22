@@ -7,15 +7,11 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Migrations\" />
+    <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="8.2.1" />
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="9.0.0" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <ProjectReference Include="..\ApiHotels.Core\ApiHotels.Core.csproj" />
+    <ProjectReference Include="..\ApiHotels.Infrastructure\ApiHotels.DAL.csproj" />
   </ItemGroup>
 
 </Project>
