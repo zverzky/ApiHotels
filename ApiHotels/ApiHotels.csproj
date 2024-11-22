@@ -10,7 +10,13 @@
     <PackageReference Include="FluentValidation" Version="11.10.0" />
     <PackageReference Include="FluentValidation.AspNetCore" Version="11.3.0" />
     <PackageReference Include="FluentValidation.DependencyInjectionExtensions" Version="11.10.0" />
+    <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="9.0.1" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.6.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\ApiHotels.BLL\ApiHotels.BLL.csproj" />
+    <ProjectReference Include="..\ApiHotels.Infrastructure\ApiHotels.DAL.csproj" />
   </ItemGroup>
 
 </Project>
