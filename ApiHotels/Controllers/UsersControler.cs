@@ -2,12 +2,19 @@
 using Microsoft.AspNetCore.Mvc;
 using ApiHotels.Models.Requests;
 using ApiHotels.Models.Responses;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.IdentityModel.Tokens;
+using System.IdentityModel.Tokens.Jwt;
+using System.Security.Claims;
+using System.Text;
+using ApiHotels.BLL.Models;
 
 namespace SampleBackend.Controllers;
 
 
 
 [Route("api/users")]
+[Authorize]
 [ApiController]
 public class UsersController : Controller
 {
@@ -19,9 +26,27 @@ public class UsersController : Controller
     }
 
     [HttpPost("login")]
-    public IActionResult Login([FromBody] ApiHotels.Models.Requests.LoginRequest request)
+    public IActionResult Login([FromBody] UserLoginModel user)
     {
-        return Ok();
+        if (user is null)
+        {
+            return BadRequest("Invalid client request");
+        }
+        if (user.Email == "johndoe@mail.ru" && user.Password == "def@123")
+        {
+            var secretKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("superSecretKey@345"));
+            var signinCredentials = new SigningCredentials(secretKey, SecurityAlgorithms.HmacSha256);
+            var tokeOptions = new JwtSecurityToken(
+                issuer: "https://localhost:5001",
+                audience: "https://localhost:5001",
+                claims: new List<Claim>(),
+                expires: DateTime.Now.AddMinutes(5),
+                signingCredentials: signinCredentials
+            );
+            var tokenString = new JwtSecurityTokenHandler().WriteToken(tokeOptions);
+            return Ok(new AuthenticatedResponse { Token = tokenString });
+        }
+        return Unauthorized();
     }
     [HttpGet("{id}")]
     public ActionResult<UserWithResponse> GetUserById([FromRoute] Guid id)
