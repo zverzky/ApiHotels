@@ -24,10 +24,10 @@ public class UsersController : Controller
         var last = new Guid();
         return Ok(last);
     }
-
+    [AllowAnonymous]
     [HttpPost("login")]
     public IActionResult Login([FromBody] UserLoginModel user)
-    {
+    { 
         //if (user is null)
         //{
         //    return BadRequest("Invalid client request");
