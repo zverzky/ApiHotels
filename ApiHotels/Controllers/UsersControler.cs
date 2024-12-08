@@ -24,7 +24,7 @@ public class UsersController : Controller
         var last = new Guid();
         return Ok(last);
     }
-
+    [AllowAnonymous]
     [HttpPost("login")]
     public IActionResult Login([FromBody] UserLoginModel user)
     {
@@ -34,7 +34,7 @@ public class UsersController : Controller
         }
         if (user.Email == "johndoe@mail.ru" && user.Password == "def@123")
         {
-            var secretKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("superSecretKey@345"));
+            var secretKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("superSecretKey@345sfasfasfasfasfasf"));
             var signinCredentials = new SigningCredentials(secretKey, SecurityAlgorithms.HmacSha256);
             var tokeOptions = new JwtSecurityToken(
                 issuer: "https://localhost:5001",

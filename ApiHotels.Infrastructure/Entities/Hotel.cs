@@ -8,7 +8,7 @@ namespace ApiHotels.DAL.Entities
 {
     public class Hotel
     {
-        public Guid Id { get; set; }
+        public Guid Id { get; set; } = new Guid();
         public string Name { get; set; }
         public string Adress { get; set; }
 

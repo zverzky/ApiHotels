@@ -15,7 +15,7 @@ namespace ApiHotels.DAL.Entities
         public Guid HotelId { get; set; }
 
         // Навигационные свойства
-        public User User { get; set; }
-        public Hotel Hotel { get; set; }
+        public User User { get; set; } = new User();
+        public Hotel Hotel { get; set; } = new Hotel();
     }
 }

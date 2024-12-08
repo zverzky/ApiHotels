@@ -8,13 +8,13 @@ namespace ApiHotels.DAL.Entities
 {
     public class Room
     {
-        public Guid Id { get; set; }
-        public string Type { get; set; }  
+        public Guid Id { get; set; } = Guid.NewGuid();
+        public string? Type { get; set; }
         public decimal Price { get; set; }
-        public bool Availability { get; set; }
+        
+        public bool Availability { get; set; } = true;
         public Guid HotelId { get; set; }
 
-        // Навигационное свойство для связи с Hotel
         public Hotel Hotel { get; set; }
     }
 }
