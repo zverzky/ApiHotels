@@ -8,7 +8,7 @@ using Microsoft.IdentityModel.Tokens;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using System.Text;
-using ApiHotels.Configuration;
+using ApiHotels.BLL.Configuration;
 
 
 

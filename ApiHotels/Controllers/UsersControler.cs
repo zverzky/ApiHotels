@@ -3,10 +3,10 @@ using Microsoft.AspNetCore.Mvc;
 using ApiHotels.Models.Requests;
 using ApiHotels.Models.Responses;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.IdentityModel.Tokens;
-using System.IdentityModel.Tokens.Jwt;
-using System.Security.Claims;
-using System.Text;
+using System;
+using System.Linq;
+using ApiHotels.BLL.Configuration;
+using ApiHotels.Models.Role;
 using ApiHotels.BLL.Models;
 
 namespace SampleBackend.Controllers;
@@ -56,24 +56,16 @@ public class UsersController : Controller
         return Ok(user);
     }
     [HttpGet]
+    [CastomAuthorize([UserRole.User, UserRole.Admin])]
     public ActionResult<List<UserResponse>> GetUsers()
     {
+        var users = new List<UserResponse>
+    {
+        new UserResponse { id = Guid.NewGuid() },
+        new UserResponse { id = Guid.NewGuid() },
+        new UserResponse { id = Guid.NewGuid() }
+    };
 
-        return Ok();
-    }
-    [HttpPut("{id}")]
-    public IActionResult UpdateUser([FromRoute] Guid id, [FromBody] UpdateUserRequest request)
-    {
-        return NoContent();
-    }
-    [HttpDelete("{id}")]
-    public ActionResult DeleteUser([FromRoute] Guid id)
-    {
-        return NoContent();
-    }
-    [HttpPatch("{id}/Deactivate)")]
-    public IActionResult Diactivate([FromRoute] Guid id)
-    {
-        return NoContent();
+        return Ok(users);
     }
 }
