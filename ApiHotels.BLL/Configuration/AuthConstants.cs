@@ -1,7 +1,7 @@
 ﻿using System;
 
 
-namespace ApiHotels.Configuration;
+namespace ApiHotels.BLL.Configuration;
 
 
 
